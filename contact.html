@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sujan Shrestha | Contact</title>
+    <link rel="icon" href="assets/newLogo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div id="header-placeholder"></div>
+        <main class="contact-getInTouch">
+            <div class="getInTouch">
+                <p class="with-contactSujanShrestha">Contact with Sujan Shrestha</p>
+                <img class="getInTouchh" src="assets/getInTouchh.png" alt="Get In Touch">
+            </div>
+            <section class="getInTouch-form">
+                <div class="contactPageHead">
+                    <h2>GET IN TOUCH</h2>
+                </div>
+                <form action="submit_page" method="post" class="contact">
+                    <div>
+                        <input type="text" name="Name" id="name" placeholder="Your Full Name" required>
+                    </div>
+                    <div>
+                        <input type="email" name="Mail" id="mail" placeholder="user@example.com" required>
+                    </div>
+                    <div>
+                        <textarea name="Message" id="message" placeholder="Your text here..."
+                            maxlength="250"></textarea>
+                        <div class="char-count">
+                            <div id="warning-msg" class="warning-msg">Almost at the limit!</div>
+                            <div id="reach-msg" class="reach-msg">Reached at the limit!</div>
+                            <div id="char-counter" class="char-counter">0/250</div>
+                        </div>
+                    </div>
+                    <div class="button-submit">
+                        <button type="submit" class="submit">Get in touch</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+        <div id="footer-placeholder"></div>
+    </div>
+    <script src="javascript.js"></script>
+</body>
+
+</html>
