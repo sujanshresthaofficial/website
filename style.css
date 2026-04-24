@@ -469,7 +469,7 @@ form textarea {
 
 .warning-msg {
     margin-top: 5px;
-    margin-right: 51%;
+    margin-right: 45%;
     display: none;
     color: #ffa500;
     opacity: 0.8;
@@ -480,7 +480,7 @@ form textarea {
 
 .reach-msg {
     margin-top: 5px;
-    margin-right: 49%;
+    margin-right: 45%;
     display: none;
     color: #ff4d4d;
     opacity: 0.8;

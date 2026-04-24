@@ -22,9 +22,9 @@
                 <div class="contactPageHead">
                     <h2>GET IN TOUCH</h2>
                 </div>
-                <form action="submit_page" method="post" class="contact">
+                <form action="https://formspree.io/f/mbdqwrbz" method="POST" class="contact">
                     <div>
-                        <input type="text" name="Name" id="name" placeholder="Your Full Name" required>
+                        <input type="text" name="Name" id="name" placeholder="Your Full Name" required pattern="^[A-Za-z\s]+$" title="Name should only contain letters and spaces">
                     </div>
                     <div>
                         <input type="email" name="Mail" id="mail" placeholder="user@example.com" required>

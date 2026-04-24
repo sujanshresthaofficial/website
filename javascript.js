@@ -86,7 +86,7 @@ window.addEventListener('load', function() {
 
 
 const textElement = document.getElementById('typewriter');
-const phrases = ["Web Developer", "Tech Enthusiast", "Creative Thinker", "Learner"];
+const phrases = ["Web Developer", "Creative Thinker", "Learner", "Tech Enthusiast", "Former Educator"];
 let phraseIndex = 0;
 let characterIndex = 0;
 let isDeleting = false;
@@ -96,7 +96,7 @@ function type() {
     
     // Determine speed based on state
     // Typing: 80ms | Erasing: 40ms | Pause at end: 1200ms
-    let typeSpeed = isDeleting ? 40 : 80;
+    let typeSpeed = isDeleting ? 40 : 60;
 
     if (isDeleting) {
         textElement.textContent = currentPhrase.substring(0, characterIndex - 1);
@@ -109,7 +109,7 @@ function type() {
     // Logic transitions
     if (!isDeleting && characterIndex === currentPhrase.length) {
         isDeleting = true;
-        typeSpeed = 1200; // Time the visitor reads the full word
+        typeSpeed = 4200; // Time the visitor reads the full word
     } else if (isDeleting && characterIndex === 0) {
         isDeleting = false;
         phraseIndex = (phraseIndex + 1) % phrases.length;
