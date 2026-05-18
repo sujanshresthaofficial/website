@@ -811,6 +811,61 @@ form input {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* --- New Phone Input Layout Styles --- */
+
+/* Ensures the phone container stays the exact width of your other form inputs */
+.phone-row-wrapper {
+    width: 330px;
+}
+
+/* Replicates your form input style onto a unified container */
+.phone-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    border-radius: 12px;
+    background: transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+}
+
+/* Strips styling off the select box to blend cleanly */
+.phone-container select {
+    background: transparent;
+    color: var(--text-color, #ffffff);
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 14px 0 14px 14px;
+    cursor: pointer;
+}
+
+/* Ensures select options are legible even against dark themes */
+.phone-container select option {
+    background-color: #1e293b; 
+    color: #ffffff;
+}
+
+/* Cleans up the inner input field inside the container */
+.phone-container input {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 14px !important;
+    width: 100% !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Moves your smooth focus effect to the container wrapper */
+.phone-container:focus-within {
+    outline: none;
+    border-color: var(--accent-blue);
+    background: rgba(24, 119, 245, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(24, 119, 245, 0.2);
+}
+
 form textarea {
     padding: 14px;
     min-width: 300px;

@@ -136,3 +136,66 @@ document.getElementById('message').addEventListener('input', function() {
     
     counter.style.color = current >= 250 ? "#ff4d4d" : "var(--accent-blue)";
 });
+
+// 1. Disable Right-Click (Context Menu)
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // 2. Block Keyboard Shortcuts for Inspect Element and View Source
+        document.onkeydown = function (e) {
+            // Block F12 (DevTools)
+            if (e.keyCode == 123) {
+                return false;
+            }
+
+            // Block Ctrl+Shift+I (Inspect)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                return false;
+            }
+
+            // Block Ctrl+Shift+J (Console)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                return false;
+            }
+
+            // Block Ctrl+Shift+C (Element Selector)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+                return false;
+            }
+
+            // Block Ctrl+U (View Source)
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                return false;
+            }
+
+            // Block Ctrl+S (Prevent saving the page)
+            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+                return false;
+            }
+        };
+
+        // 2. Disable Copy, Cut, and Paste
+        document.addEventListener('copy', (e) => {
+            e.preventDefault();
+            alert("Copying content is disabled on this portfolio.");
+        });
+        document.addEventListener('cut', (e) => e.preventDefault());
+
+        // 3. Block Keyboard Shortcuts
+        document.onkeydown = function (e) {
+            // Block F12
+            if (e.keyCode == 123) return false;
+
+            // Block Ctrl+C (Copy), Ctrl+V (Paste), Ctrl+X (Cut), Ctrl+A (Select All)
+            if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 88 || e.keyCode === 65)) {
+                return false;
+            }
+
+            // Block Ctrl+Shift+I (Inspect)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
+
+            // Block Ctrl+Shift+J (Console)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
+
+            // Block Ctrl+U (View Source)
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
+        };
