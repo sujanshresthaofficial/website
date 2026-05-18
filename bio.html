@@ -8,6 +8,511 @@
     <link rel="icon" href="assets/newLogo.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* --- Bio Page --- */
+.bio-main {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+}
+
+.bio-hero {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 72px 0;
+}
+
+.bio-profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 48px 56px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    border-radius: 28px;
+    text-align: center;
+    width: 100%;
+    max-width: 540px;
+}
+
+/* Gradient ring around photo */
+.bio-avatar-ring {
+    width: 148px;
+    height: 148px;
+    border-radius: 50%;
+    box-shadow: 5px 3px 28px rgba(24, 119, 245, 0.45);
+    flex-shrink: 0;
+}
+
+.bio-avatar-ring img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--bg-color);
+    display: block;
+}
+
+.bio-profile-card h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.9rem;
+    font-weight: bold;
+    color: var(--accent-blue);
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.bio-tagline {
+    font-size: 0.9rem;
+    opacity: 0.6;
+    letter-spacing: 0.8px;
+    margin: 0;
+}
+
+/* Social icon row */
+.bio-socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 6px;
+}
+
+.bio-socials a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    border: 1px solid rgba(128, 128, 128, 0.22);
+    background: rgba(128, 128, 128, 0.05);
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+    color: var(--text-color);
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.bio-socials a:hover {
+    transform: translateY(-4px);
+    /* border-color: var(--accent-blue); */
+    box-shadow: 0 6px 18px rgba(24, 119, 245, 0.28);
+}
+
+.bio-socials .fa-facebook:hover {
+    color: var(--accent-blue);
+}
+
+.bio-socials .fa-linkedin:hover {
+    color: var(--accent-blue);
+}
+
+.bio-socials .fa-youtube:hover {
+    color: #ff0000;
+}
+
+.bio-socials .fa-github:hover {
+    color: var(--text-color);
+}
+
+.bio-socials .fa-tiktok:hover {
+    color: var(--text-color);
+}
+
+.bio-socials .fa-instagram:hover {
+    background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ── Section Title ─────────────────────────── */
+.bio-section {
+    margin-top: 64px;
+}
+
+.bio-section-title {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--accent-blue);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.bio-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(24, 119, 245, 0.5), transparent);
+}
+
+/* ── Timeline ──────────────────────────────── */
+.bio-timeline {
+    position: relative;
+}
+
+/* Center vertical line */
+.bio-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent-blue), rgba(24, 119, 245, 0.08));
+    transform: translateX(-50%);
+}
+
+.bio-timeline-item {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: calc(50% + 32px);
+    margin-bottom: 36px;
+    position: relative;
+}
+
+.bio-timeline-item:nth-child(even) {
+    justify-content: flex-start;
+    padding-right: 0;
+    padding-left: calc(50% + 32px);
+}
+
+/* Dot on the line */
+.bio-timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 22px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--accent-blue);
+    box-shadow: 0 0 12px rgba(24, 119, 245, 0.6);
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.bio-timeline-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    /* border: 1px solid rgba(255, 255, 255, 0.1); */
+    border-radius: 16px;
+    padding: 20px 22px;
+    width: 100%;
+    max-width: 370px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bio-timeline-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-blue);
+    box-shadow: 0 14px 32px rgba(24, 119, 245, 0.2);
+}
+
+.bio-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 3px 11px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+}
+
+.bio-badge-edu {
+    background: rgba(24, 119, 245, 0.12);
+    color: var(--accent-blue);
+}
+
+.bio-badge-training {
+    background: rgba(131, 58, 180, 0.12);
+    color: #a855f7;
+}
+
+.bio-badge-work {
+    background: rgba(34, 197, 94, 0.12);
+    color: #22c55e;
+}
+
+.bio-timeline-year {
+    font-size: 0.78rem;
+    opacity: 0.48;
+    margin-bottom: 6px;
+}
+
+.bio-timeline-card h3 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.98rem;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: var(--text-color);
+}
+
+.bio-timeline-org {
+    font-size: 0.84rem;
+    color: var(--accent-blue);
+    font-weight: bold;
+    opacity: 0.85;
+    margin-bottom: 8px;
+}
+
+.bio-timeline-card p {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    opacity: 0.7;
+    margin: 0;
+}
+
+/* ── Skills ────────────────────────────────── */
+.bio-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.bio-skill-group {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    /* border: 1px solid rgba(255, 255, 255, 0.1); */
+    border-radius: 16px;
+    padding: 22px 20px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bio-skill-group:hover {
+    border-color: var(--accent-blue);
+    box-shadow: 0 8px 24px rgba(24, 119, 245, 0.14);
+}
+
+.bio-skill-group h4 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    color: var(--accent-blue);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(24, 119, 245, 0.2);
+}
+
+.bio-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.bio-pill {
+    font-size: 0.78rem;
+    padding: 5px 13px;
+    border-radius: 20px;
+    /* border: 1px solid rgba(24, 119, 245, 0.28); */
+    background: rgba(24, 119, 245, 0.05);
+    color: var(--text-color);
+    transition: all 0.22s ease;
+    cursor: default;
+    user-select: none;
+}
+
+.bio-pill:hover {
+    background: rgba(24, 119, 245, 0.12);
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+}
+
+/* ── Hobbies ───────────────────────────────── */
+.bio-hobbies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 16px;
+}
+
+.bio-hobby-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    /* border: 1px solid rgba(255, 255, 255, 0.1); */
+    border-radius: 16px;
+    padding: 26px 14px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.bio-hobby-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-blue);
+    box-shadow: 0 12px 28px rgba(24, 119, 245, 0.2);
+}
+
+.bio-hobby-card i {
+    font-size: 1.9rem;
+    color: var(--accent-blue);
+    margin-bottom: 12px;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.bio-hobby-card:hover i {
+    transform: scale(1.15);
+}
+
+.bio-hobby-card span {
+    font-size: 0.8rem;
+    font-weight: bold;
+    opacity: 0.7;
+    letter-spacing: 0.4px;
+    display: block;
+}
+
+/* ── Scroll Animations ─────────────────────── */
+.fade-up {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered children */
+.stagger>* {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.stagger.visible>*:nth-child(1) {
+    transition-delay: 0.05s;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger.visible>*:nth-child(2) {
+    transition-delay: 0.12s;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger.visible>*:nth-child(3) {
+    transition-delay: 0.19s;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger.visible>*:nth-child(4) {
+    transition-delay: 0.26s;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger.visible>*:nth-child(5) {
+    transition-delay: 0.33s;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger.visible>*:nth-child(6) {
+    transition-delay: 0.40s;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger.visible>*:nth-child(n+7) {
+    transition-delay: 0.47s;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Dark Mode Overrides ────────────────────── */
+body.dark-mode .bio-profile-card,
+body.dark-mode .bio-timeline-card,
+body.dark-mode .bio-skill-group,
+body.dark-mode .bio-hobby-card {
+    background: rgba(0, 0, 0, 0.28);
+    border-color: rgba(255, 255, 255, 0.07);
+}
+
+/* ── Responsive — Tablet (≤ 768px) ─────────── */
+@media screen and (max-width: 768px) {
+    .bio-main {
+        padding: 32px 16px 64px;
+    }
+
+    .bio-profile-card {
+        padding: 36px 28px;
+        max-width: 100%;
+    }
+
+    /* Collapse timeline to left-side line */
+    .bio-timeline::before {
+        left: 24px;
+        transform: none;
+    }
+
+    .bio-timeline-item,
+    .bio-timeline-item:nth-child(even) {
+        justify-content: flex-start;
+        padding-right: 0;
+        padding-left: 52px;
+    }
+
+    .bio-timeline-item::before,
+    .bio-timeline-item:nth-child(even)::before {
+        left: 18px;
+        transform: none;
+    }
+
+    .bio-timeline-card {
+        max-width: 100%;
+    }
+
+    .bio-hobbies-grid {
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    }
+}
+
+/* Responsive — Mobile (≤ 480px) */
+@media screen and (max-width: 480px) {
+    .bio-profile-card h1 {
+        font-size: 1.5rem;
+    }
+
+    .bio-avatar-ring {
+        width: 120px;
+        height: 120px;
+    }
+
+    .bio-section-title {
+        font-size: 1.15rem;
+    }
+
+    .bio-skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bio-hobbies-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .bio-section {
+        margin-top: 48px;
+    }
+}
+    </style>
 </head>
 
 <body>
