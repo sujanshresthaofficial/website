@@ -1106,15 +1106,15 @@ form textarea:focus {
     }
 }
 
-/* --- Smooth Cross Animation --- */
-.menu-toggle.active .bar:nth-child(2) {
-    opacity: 0;
-}
+    /* --- Smooth Cross Animation --- */
+    .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
 
-.menu-toggle.active .bar:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-}
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
 
-.menu-toggle.active .bar:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
-}
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }

@@ -47,7 +47,7 @@ function switchTheme(e) {
 }
 
 // Built-in Lightweight Typewriter Sequence for the Hero Block
-const words = ["IT Student", "Web Developer", "Creative Thinker", "Rotaractor", "Former Teacher"];
+const words = ["IT Student", "Web Developer", "Former Teacher", "Rotaractor"];
 let i = 0, timer;
 
 function typingEffect() {

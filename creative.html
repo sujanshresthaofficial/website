@@ -209,9 +209,106 @@
         }
 
         .modal-text-content {
-            font-size: 1.05rem;
+            font-size: 0.8rem;
+            font-weight: bold;
             line-height: 1.8;
             opacity: 0.9;
+        }
+
+        /* --- Chari Ko Pida Custom Layout --- */
+        .chari-poem-container {
+            display: flex;
+            flex-direction: column;
+            gap: 45px;
+            padding: 10px 0;
+            font-family: inherit;
+        }
+
+        /* Red Banner Header matching image_ec16be.png */
+
+        .chari-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .chari-text {
+            flex: 1;
+            font-size: 0.8rem;
+            font-weight: bold;
+            line-height: 1.75;
+            color: var(--text-color);
+        }
+
+        .chari-img {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .chari-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Custom Image Size Variances to match the layout archetype */
+        .img-size-sm {
+            width: 110px;
+            height: 110px;
+        }
+
+        .img-size-md {
+            width: 130px;
+            height: 130px;
+        }
+
+        .img-size-lg {
+            width: 150px;
+            height: 170px;
+        }
+
+        .img-size-md-horizontal {
+            width: 160px;
+            height: 100px;
+        }
+
+        .img-size-lg-vertical {
+            width: 140px;
+            height: 180px;
+        }
+
+        /* --- Responsive Media Queries --- */
+        @media (max-width: 768px) {
+            .chari-row,
+            .chari-row.layout-right-img,
+            .chari-row.layout-left-img {
+                flex-direction: column !important;
+                /* Forces top-to-bottom layout */
+                text-align: center;
+                gap: 15px;
+                border-bottom: 1px dashed var(--border-color);
+                padding-bottom: 25px;
+            }
+
+            .chari-row:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+
+            .chari-text {
+                order: 1;
+                /* Puts poem text first on mobile devices */
+            }
+
+            .chari-img {
+                order: 2;
+                /* Drops image nicely below text on mobile screens */
+                max-width: 150px;
+                height: auto;
+            }
         }
     </style>
 </head>
@@ -255,6 +352,131 @@
 
                 <div class="creative-post-card entries-poetry fade-up">
                     <div class="post-media-box">
+                        <img src="assets/caged-bird-cover.png" alt="चरीको पीडा">
+                        <span class="post-category-tag">Poetry</span>
+                    </div>
+                    <div class="post-body-info">
+                        <div class="post-meta-timeline">
+                            <span><i class="fa-regular fa-calendar"></i> July 24, 2022</span>
+                            <span><i class="fa-regular fa-clock"></i> 4 min read</span>
+                        </div>
+                        <h3>चरीको पीडा</h3>
+                        <p class="post-snippet-preview">हटाएर जालझेल आज उडे लक्ष्य चुम्छु भनी <br> मनमा आँट विश्वास बोकी साहसी म बन्छु भनी...</p>
+                        <button class="btn-read-more" onclick="openPoemModal('चरीको पीडा', 'June 16, 2026', 'Poem',
+                        `
+                        <div class='chari-poem-container'>
+                            
+                            <!-- Stanza 1 -->
+                            <div class='chari-row layout-left-img'>
+                                <div class='chari-img img-size-sm'><img src='assets/cage-hand.png' alt='illustration'></div>
+                                <div class='chari-text'>बन्धनबाट कहिले छुट्छु, बस्छु दिन गनी<br>एक दिन त पक्के पनि, छुट्छु होला भनी<br>कस्ते गर्ला मुक्त मलाई बसी राछु कुरी,<br>छ होला नि अधिकार, बाच्ने हाम्रो पनि ॥१॥</div>
+                            </div>
+
+                            <!-- Stanza 2 -->
+                            <div class='chari-row layout-right-img'>
+                                <div class='chari-text'>भयो दिन गुजारेको, महिना दिन बाह्रै<br>बन्धनमा बस्नुको पिडा हुन्छ, मृत्यु भन्दा साह्रै<br>सजिनु पर्छ पिजडामा निर्जीव वस्तु जस्तै,<br>यो भन्दा त राम्रो, पापी मान्छे बरु मलाई मारै ॥२॥</div>
+                                <div class='chari-img img-size-lg'><img src='assets/colorful-birds.png' alt='illustration'></div>
+                            </div>
+
+                            <!-- Stanza 3 -->
+                            <div class='chari-row layout-left-img'>
+                                <div class='chari-img img-size-md'><img src='assets/toy-parrot.png' alt='illustration'></div>
+                                <div class='chari-text'>राख्छन् फातमको पिजडामा कोही, सुनको पिजडामा<br>धित मरुन्जेल हेर्छन् अनि रमाउँछन्, सुनको पिजडामा<br>जति गायो गीत, हेर्दै उति रमाउँन्,<br>गुन्गुनाउँदै बिती रहेको छ दिन, सुनको पिजडामा ॥३॥</div>
+                            </div>
+
+                            <!-- Stanza 4 -->
+                            <div class='chari-row layout-right-img'>
+                                <div class='chari-text'>डराउँदैत्र मानिस समान हामीलाई<br>समाते भन्दै देखाई हिँड्छन् गामलाई<br>अरुलाई पिडा दिएर आफु खुशी हुनु पाप नै हो,<br>छाती माथी पत्थर राखी छाडी देऊ यी कामलाई ॥४॥</div>
+                                <div class='chari-img img-size-md-horizontal'><img src='assets/sparrow-hand.png' alt='illustration'></div>
+                            </div>
+
+                            <!-- Stanza 5 -->
+                            <div class='chari-row layout-left-img'>
+                                <div class='chari-img img-size-lg-vertical'><img src='assets/flying-bird.png' alt='illustration'></div>
+                                <div class='chari-text'>फर्फराउँदै उड्थ्ये वन र पाखा, फिंजाइ पखेटा<br>वारी र पारी नौ डाँडा सरी, फिंजाइ पखेटा<br>सपना थियो पुग्ने मेरो क्षितिज पारी गाउँ,<br>निर्दयी मानिस काटिदिएऊ मेरा, फिंजाइ पखेटा ॥५॥</div>
+                            </div>
+
+                            <!-- Stanza 6 -->
+                            <div class='chari-row layout-right-img'>
+                                <div class='chari-text'>जति हातमा पारे चरीहरू, उति शोभा छरे<br>सायद जालमा पर्छौंकी, सात समुन्द्र तरे<br>उडेका थियौँ लक्ष्य लिई साथी सँग सँगै,<br>थाहा छैन मेरा साथी, जिउँदै छन् की मरे ॥६॥</div>
+                                <div class='chari-img img-size-md-horizontal'><img src='assets/budgies-cage.png' alt='illustration'></div>
+                            </div>
+
+                            <!-- Stanza 7 -->
+                            <div class='chari-row layout-left-img'>
+                                <div class='chari-img img-size-md'><img src='assets/sad-bird.png' alt='illustration'></div>
+                                <div class='chari-text'>पिर, व्यथा, वेदनाले थाल्तो मुटु घोचन<br>पिरे पिलें खीर खाली सकिन क्यै सोचन<br>लुटेऊ सारा स्वतन्त्रता अनि अधिकार,<br>गरिदेऊ यो दुःख, पिडा, बन्धन मोचन ॥७॥</div>
+                            </div>
+
+                            <!-- Stanza 8 -->
+                            <div class='chari-row layout-right-img'>
+                                <div class='chari-text'>हटाएर जालझेल आज उडे लक्ष्य चुम्छु भनी<br>मनमा आँट, विश्वास बोकी साहसी म बन्छु भनी<br>तोडी सारा बार बन्धन गगन छानो अङ्गाल्लाई,<br>मुखमा पात च्यपी उडे शान्तिको प्रतीक बनी ॥८॥</div>
+                                <div class='chari-img img-size-md-horizontal'><img src='assets/free-dove.png' alt='illustration'></div>
+                            </div>
+                        </div>`)">Read Poem <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+
+                <div class="creative-post-card entries-poetry fade-up">
+                    <div class="post-media-box">
+                        <img src="assets/castle-quake.png" alt="Poem Design Process">
+                        <span class="post-category-tag">Poetry</span>
+                    </div>
+                    <div class="post-body-info">
+                        <div class="post-meta-timeline">
+                            <span><i class="fa-regular fa-calendar"></i> July 24, 2022</span>
+                            <span><i class="fa-regular fa-clock"></i> 2 min read</span>
+                        </div>
+                        <h3>कम्पन महल</h3>
+                        <p class="post-snippet-preview">कम्पन दिँदै घुम्थयो महल, मध्यरात हुन्थ्यो जब<br>रुन्थ्यो कोहि चिच्याउँदै त्यहाँ, ढल्थ्यो अनि रुख तब...</p>
+                        <button class="btn-read-more"
+                            onclick="openPoemModal('आकाश', 'April 24, 2026', 'Poem',
+                        'दोभान वारी मसानघाट, बिचमा विशाल घर <br> देब्रेतर्फ झाडी छ पात्तीको, दाहिने पिपलवर <br> त्रासित छ भयानक दृश्य, हृदय थर्र काप्ने गरी <br> त्रास दिन्छ अँधेरी रातमा, ढोका ढकढक गरी ॥१॥ <br> <br> कम्पन दिँदै घुम्थ्यो महल, मध्यरात हुँन्थ्यो जब <br> रुन्थ्यो कोहि चिच्याउँदै त्यहाँ, ढल्थ्यो अनि रूख तब <br> गाह्रो, भित्तो, झ्याल, खम्बा सारा, बस्दो हो लहराले बेरी <br> किरण-बिम्ब झुल्के सँगसँगै, उठ्दो हो रूख फेरी ॥२॥ <br> <br> लुक्दै हेरे जस्तो लाग्छ लाल, आँखाले दलानबाट <br> गरछ ढोका त झ्याल कहिले, सन्दुक घटघट <br> चिच्याउँछ अदृश्य मानिस, जबहुन्छ लाल छुरा <br> कैले बज्छ छमछम् पाँयल, कैले छिनछिन चुरा ॥३॥')">Read
+                            Poem <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                
+                <div class="creative-post-card entries-poetry fade-up">
+                    <div class="post-media-box">
+                        <img src="assets/birds-flying-in-the-sky.png" alt="Poem Design Process">
+                        <span class="post-category-tag">Poetry</span>
+                    </div>
+                    <div class="post-body-info">
+                        <div class="post-meta-timeline">
+                            <span><i class="fa-regular fa-calendar"></i> July 24, 2022</span>
+                            <span><i class="fa-regular fa-clock"></i> 2 min read</span>
+                        </div>
+                        <h3>आकाश</h3>
+                        <p class="post-snippet-preview">छोडे सोच्नलाई मेरा एकछिन पखेटा जहाँ छ<br>देख्दा छुन्छु जस्तो लाग्ने त्यो आकाश कहाँ छ ?...</p>
+                        <button class="btn-read-more"
+                            onclick="openPoemModal('आकाश', 'April 24, 2026', 'Poem',
+                        'सानै छँदा चउरमा खेल खेल्न जाँदा जब <br> खेल्दै गर्दा पल्टे भुँईमा आकाश देखे तब ॥१॥ <br> <br> उड्दै थिए केही पन्छीहरू रमाए तिनीलाई गनी <br> जिज्ञासा जाग्यो सोधे ठूलालाई त्यी कहाँ उडेका भनी ॥२॥ <br> <br> आदेश र आशिष जसतै दिँदै हेरे मलाई <br> ठूलाले भने उडेका हुन् त्यी आकश छुनलाई ॥३॥ <br> <br> त्यही दिनदेखि सोचे म नि छुन्छु आकाश <br> भनी ल्याई धन्सारबाट चढे माथि म बाकास ॥४॥ <br> <br> उडे माथि माथि तिनी त तिनीमा पखेटा थ्यो र <br> एक हात माथि बाकाश चढि आकाश कहाँ छोइन्थ्यो र ? ॥५॥ <br> <br> कहाँ लुके पन्छीका जसता पखेटा खोजी राछु <br> क्यारी छुने त्यो निलो आकाश भनी सोची राछु ॥६॥ <br><br> छोडे सोच्नलाई मेरा एकछिन पखेटा जहाँ छ <br> देख्दा छुन्छु जस्तो लाग्ने त्यो आकाश कहाँ छ ? ॥७॥')">Read
+                            Poem <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="creative-post-card entries-poetry fade-up">
+                    <div class="post-media-box">
+                        <img src="assets/cynodon-dactylon.png" alt="Poem Design Process">
+                        <span class="post-category-tag">Poetry</span>
+                    </div>
+                    <div class="post-body-info">
+                        <div class="post-meta-timeline">
+                            <span><i class="fa-regular fa-calendar"></i> July 24, 2022</span>
+                            <span><i class="fa-regular fa-clock"></i> 1 min read</span>
+                        </div>
+                        <h3>दुबो</h3>
+                        <p class="post-snippet-preview">उडाई लग्यो गुँड लाँउन चरी, रित अन्सार<br>एउटै खुट्टो टेकन पाए ढाक्थे म संसार...</p>
+                        <button class="btn-read-more"
+                            onclick="openPoemModal('दुबो', 'April 24, 2026', 'Poem',
+                        'खडेरी लाग्यो चरको घाम सुक्छुकी राम राम् <br> मौलाउँथे झरी परेको भए दिनरात झम झम् ॥१॥ <br> <br> फैलिदैथिए खेतबारीमा हरियै भएर <br> हातका पौजाले उखेलिदिए मबोझ भएर ॥२॥ <br> <br> जुरुक्क उखेलि फ्याक्दियौ पर मिलेर मेलामा <br> ढुकुर आई टपक्क टिपी उड्यो त्यै बेलामा ॥३॥ <br> <br> उडाई लग्यो गुँड लाँउन चरी, रित अन्सार <br> एउटै खुट्टो टेकन पाए ढाक्थे म संसार ॥४॥')">Read
+                            Poem <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="creative-post-card entries-poetry fade-up">
+                    <div class="post-media-box">
                         <img src="assets/bhanubhakta-acharya.png" alt="Poem Design Process">
                         <span class="post-category-tag">Poetry</span>
                     </div>
@@ -264,11 +486,10 @@
                             <span><i class="fa-regular fa-clock"></i> 2 min read</span>
                         </div>
                         <h3>व्यासको भूमि भानुको देन</h3>
-                        <p class="post-snippet-preview">कुमार्ग त्यागी तिमीले हामीलाई
-                            सतमार्ग हिडायौ <br> के रैछ ज्ञान के रैछ धर्म संसारभर चिनायौ ।।१।।...</p>
+                        <p class="post-snippet-preview">कला र संगीत, साहित्य, काव्य पूर्खाको मान हो<br>व्यासको भुमि भानुको देन अमुल्य दान हो...</p>
                         <button class="btn-read-more"
                             onclick="openPoemModal('व्यासको भूमि भानुको देन', 'April 24, 2026', 'Poem',
-                        'कुमार्ग त्यागी तिमीले हामीलाई सतमार्ग हिडायौ <br> के रैछ ज्ञान के रैछ धर्म संसारभर चिनायौ ।।१।। <br> <br> कला र संगीत, साहित्य, काव्य पूर्खाको मान हो <br> व्यासको भुमि भानुको देन अमुल्य दान हो ।।२।। <br> <br> छायौ नेपाली साहित्यमा भानु अमुल्य योगदान दिई <br> संसारलाई शिक्षित गरायौ व्यास यहि ठाउँमा ध्यान लिई ।।३।। <br> <br> रामायण जस्ता ठूल-ठूला काव्य तिमीले कोरेछौ <br> सादा र खाली चित्रमा रङ्गीन रङ्गहरु भोरेछौ ।।४।। <br> <br> स्वच्छ र सफा मनका कवि छौ सबको मुखमा <br> निरन्तर कलम चालेका थियौ सुख र दुःखमा ।।५।। <br> <br> नपरोस् किन हावा हुरी आधी सँग ठोकिन <br> बढाउँछौँ अघि पाइला तिम्रा दिँदैनौँ रोकिन ।।६।। <br> <br> दिएका तिमीले धर्म र ज्ञान साहित्य, कलालाई <br> जोगाई राख्छौँ हस्तान्तरण गछौँ आउँदो पुस्तालाई ।।७।। <br> <br> ठूल-ठूला पहाड एक्लै होइन मिलेर चढ्नु छ <br> व्यास झैँ ज्ञानी, भानु झैँ स्वच्छ भई अगाडी बढ्नु छ ।।८।।')">Read
+                        'कुमार्ग त्यागी तिमीले हामीलाई सतमार्ग हिडायौ <br> के रैछ ज्ञान के रैछ धर्म संसारभर चिनायौ ॥१॥ <br> <br> कला र संगीत, साहित्य, काव्य पूर्खाको मान हो <br> व्यासको भुमि भानुको देन अमुल्य दान हो ॥२॥ <br> <br> छायौ नेपाली साहित्यमा भानु अमुल्य योगदान दिई <br> संसारलाई शिक्षित गरायौ व्यास यहि ठाउँमा ध्यान लिई ॥३॥ <br> <br> रामायण जस्ता ठूल-ठूला काव्य तिमीले कोरेछौ <br> सादा र खाली चित्रमा रङ्गीन रङ्गहरु भोरेछौ ॥४॥ <br> <br> स्वच्छ र सफा मनका कवि छौ सबको मुखमा <br> निरन्तर कलम चालेका थियौ सुख र दुःखमा ॥५॥ <br> <br> नपरोस् किन हावा हुरी आधी सँग ठोकिन <br> बढाउँछौँ अघि पाइला तिम्रा दिँदैनौँ रोकिन ॥६॥ <br> <br> दिएका तिमीले धर्म र ज्ञान साहित्य, कलालाई <br> जोगाई राख्छौँ हस्तान्तरण गछौँ आउँदो पुस्तालाई ॥७॥ <br> <br> ठूल-ठूला पहाड एक्लै होइन मिलेर चढ्नु छ <br> व्यास झैँ ज्ञानी, भानु झैँ स्वच्छ भई अगाडी बढ्नु छ ॥८॥')">Read
                             Poem <i class="fa-solid fa-arrow-right"></i></button>
                     </div>
                 </div>
