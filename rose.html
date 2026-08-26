@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Rosy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Alex+Brush&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --plum-dark: #241220;
+            --plum-deep: #3b1c34;
+            --plum-mid: #5a2a4d;
+            --rose-blush: #f3d9e3;
+            --rose-accent: #e8a6c1;
+            --gold-soft: #d8b26e;
+            --cream: #fbf3ec;
+            --ink: #2a1520;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--plum-dark);
+            color: var(--cream);
+            font-family: 'Cormorant Garamond', serif;
+            overflow-x: hidden;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ---------- Ambient petals ---------- */
+        #petal-canvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .petal {
+            position: absolute;
+            top: -5%;
+            font-size: 1.1rem;
+            color: var(--rose-accent);
+            opacity: 0.75;
+            animation: fall linear infinite;
+            will-change: transform;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) translateX(var(--drift, 0px)) rotate(360deg);
+            }
+        }
+
+        section {
+            position: relative;
+            z-index: 2;
+            padding: 6rem 1.5rem;
+            max-width: 920px;
+            margin: 0 auto;
+        }
+
+        /* ---------- Hero ---------- */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 2rem;
+            background:
+                radial-gradient(ellipse at 50% 20%, rgba(232, 166, 193, 0.18), transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(216, 178, 110, 0.10), transparent 55%),
+                var(--plum-dark);
+        }
+
+        .eyebrow {
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            color: var(--gold-soft);
+            margin-bottom: 1.6rem;
+            font-family: 'Cormorant Garamond', serif;
+            opacity: 0;
+            animation: riseIn 1s ease forwards 0.2s;
+        }
+
+        .hero-name {
+            font-family: 'Alex Brush', cursive;
+            font-size: clamp(4.5rem, 15vw, 9rem);
+            line-height: 1;
+            color: var(--rose-blush);
+            text-shadow: 0 0 40px rgba(232, 166, 193, 0.35);
+            opacity: 0;
+            animation: riseIn 1.2s ease forwards 0.5s;
+        }
+
+        .hero-sub {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: var(--cream);
+            margin-top: 1.4rem;
+            opacity: 0;
+            animation: riseIn 1.2s ease forwards 0.9s;
+        }
+
+        @keyframes riseIn {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-cue {
+            position: absolute;
+            bottom: 2.4rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold-soft);
+            opacity: 0.7;
+            animation: bob 2.4s ease-in-out infinite;
+        }
+
+        @keyframes bob {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(8px);
+            }
+        }
+
+        /* ---------- Section heading ---------- */
+        .section-eyebrow {
+            text-align: center;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            color: var(--gold-soft);
+            margin-bottom: 0.8rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            color: var(--rose-blush);
+            margin-bottom: 2.8rem;
+        }
+
+        /* ---------- Message / letter ---------- */
+        .letter {
+            background: linear-gradient(180deg, rgba(251, 243, 236, 0.05), rgba(251, 243, 236, 0.02));
+            border: 1px solid rgba(216, 178, 110, 0.25);
+            border-radius: 4px;
+            padding: 3rem clamp(1.5rem, 5vw, 3.5rem);
+            position: relative;
+        }
+
+        .letter::before {
+            content: "❝";
+            position: absolute;
+            top: -1.4rem;
+            left: 2rem;
+            font-size: 3rem;
+            color: var(--gold-soft);
+            font-family: 'Playfair Display', serif;
+            opacity: 0.6;
+        }
+
+        .letter p {
+            font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+            line-height: 1.9;
+            color: var(--cream);
+            margin-bottom: 1.2rem;
+        }
+
+        .letter p:last-child {
+            margin-bottom: 0;
+        }
+
+        .signoff {
+            font-family: 'Alex Brush', cursive;
+            font-size: 2rem;
+            color: var(--rose-accent);
+            display: block;
+            margin-top: 1.4rem;
+            text-align: right;
+        }
+
+        /* ---------- Gallery ---------- */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1rem;
+        }
+
+        .frame {
+            background: var(--cream);
+            padding: 0.9rem 0.9rem 2.6rem;
+            border-radius: 2px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+            transform: rotate(var(--tilt, -2deg));
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            overflow: hidden;
+        }
+
+        .frame:nth-child(2) {
+            --tilt: 2deg;
+        }
+
+        .frame:nth-child(3) {
+            --tilt: -1deg;
+        }
+
+        .frame:nth-child(4) {
+            --tilt: 1.5deg;
+        }
+
+        .frame:hover {
+            transform: rotate(0deg) scale(1.04) translateY(-6px);
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45);
+        }
+
+        .photo-slot {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            display: block;
+            background:
+                linear-gradient(135deg, rgba(90, 42, 77, 0.5), rgba(232, 166, 193, 0.35)),
+                repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.04) 0 10px, transparent 10px 20px);
+            color: var(--plum-deep);
+        }
+
+        div.photo-slot {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .photo-slot .plus {
+            font-size: 1.8rem;
+            color: rgba(59, 28, 52, 0.55);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .photo-slot span {
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            color: rgba(59, 28, 52, 0.6);
+            text-transform: uppercase;
+        }
+
+        /* safeguard: if an <img> ever ends up nested inside a placeholder div
+     instead of replacing it, still force it to fill the 4:3 box */
+        .photo-slot img,
+        div.photo-slot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .frame figcaption {
+            text-align: center;
+            font-family: 'Alex Brush', cursive;
+            font-size: 1.3rem;
+            color: var(--plum-deep);
+            padding-top: 0.6rem;
+        }
+
+        /* ---------- Candle wish ---------- */
+        #wish {
+            text-align: center;
+        }
+
+        .cake {
+            max-width: 420px;
+            margin: 0 auto 2rem;
+        }
+
+        .candles {
+            display: flex;
+            justify-content: center;
+            gap: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .candle {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: none;
+            border: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .flame {
+            width: 12px;
+            height: 20px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            background: radial-gradient(circle at 50% 30%, #fff3c4, var(--gold-soft) 60%, #b5762e 100%);
+            box-shadow: 0 0 16px 4px rgba(216, 178, 110, 0.65);
+            animation: flicker 1.6s ease-in-out infinite;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        @keyframes flicker {
+
+            0%,
+            100% {
+                transform: scale(1) rotate(-2deg);
+            }
+
+            50% {
+                transform: scale(1.08) rotate(2deg);
+            }
+        }
+
+        .candle.out .flame {
+            opacity: 0;
+            transform: scale(0.2);
+            box-shadow: none;
+        }
+
+        .stick {
+            width: 8px;
+            height: 44px;
+            background: linear-gradient(180deg, var(--rose-accent), var(--plum-mid));
+            border-radius: 2px;
+            margin-top: -2px;
+        }
+
+        .icing {
+            width: 280px;
+            height: 60px;
+            margin: 0 auto;
+            background: var(--rose-blush);
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+
+        .cake-base {
+            width: 320px;
+            height: 70px;
+            margin: -4px auto 0;
+            background: linear-gradient(180deg, var(--plum-mid), var(--plum-deep));
+            border-radius: 6px;
+        }
+
+        .wish-hint {
+            font-size: 1rem;
+            color: var(--gold-soft);
+            letter-spacing: 0.05em;
+            margin-top: 1.6rem;
+            opacity: 0.85;
+        }
+
+        .wish-message {
+            margin-top: 1.6rem;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            color: var(--rose-blush);
+            min-height: 2.4rem;
+        }
+
+        /* ---------- Golden glow flash on wish ---------- */
+        #glow-flash {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 5;
+            background: radial-gradient(circle at 50% 55%, rgba(216, 178, 110, 0.55), rgba(232, 166, 193, 0.18) 45%, transparent 75%);
+            opacity: 0;
+        }
+
+        #glow-flash.fire {
+            animation: glowPulse 1.6s ease-out forwards;
+        }
+
+        @keyframes glowPulse {
+            0% {
+                opacity: 0;
+            }
+
+            25% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* ---------- Bursting hearts ---------- */
+        .burst-heart {
+            position: fixed;
+            left: 50%;
+            top: 62%;
+            font-size: 1.4rem;
+            color: var(--rose-accent);
+            pointer-events: none;
+            z-index: 6;
+            opacity: 0;
+            animation: burstOut 1.8s ease-out forwards;
+        }
+
+        @keyframes burstOut {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.3);
+            }
+
+            12% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform:
+                    translate(calc(-50% + var(--bx)), calc(-50% + var(--by))) scale(1.1) rotate(var(--br));
+            }
+        }
+
+        /* ---------- Reveal card ---------- */
+        .reveal-card {
+            max-width: 520px;
+            margin: 2.4rem auto 0;
+            padding: 2.2rem 2rem;
+            border-radius: 6px;
+            background: linear-gradient(180deg, rgba(251, 243, 236, 0.07), rgba(251, 243, 236, 0.02));
+            border: 1px solid rgba(216, 178, 110, 0.35);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transform: translateY(24px) scale(0.97);
+            transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+
+        .reveal-card.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .reveal-card .kicker {
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold-soft);
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .reveal-card p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(1.15rem, 2.8vw, 1.5rem);
+            line-height: 1.7;
+            color: var(--rose-blush);
+            min-height: 1.7em;
+        }
+
+        .reveal-card .cursor {
+            display: inline-block;
+            width: 1px;
+            background: var(--rose-blush);
+            margin-left: 2px;
+            animation: blink 0.9s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1.5rem 4rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(251, 243, 236, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="petal-canvas"></div>
+
+    <section id="hero">
+        <div class="eyebrow">A little something for you</div>
+        <h1 class="hero-name">Rosy</h1>
+        <p class="hero-sub">Happy Birthday, my highness</p>
+        <div class="scroll-cue">scroll ↓</div>
+    </section>
+
+    <section>
+        <div class="section-eyebrow">For You</div>
+        <h2 class="section-title">A Letter to you</h2>
+        <div class="letter">
+            <p>Dear,</p>
+            <p>&nbsp; &nbsp; &nbsp; &nbsp; Warm congratulations! for stepping into next year of your life. Another year
+                has come around, and somehow you manage to make every single one better than the last. Today isn't just
+                a date on the calendar &mdash; it's a celebration of everything you are: the warmth you bring into a
+                room, the way you laugh with your whole heart, and the quiet, steady kindness you give without ever
+                asking for anything back.</p>
+            <p>I hope today feels exactly the way you deserve &mdash; slow when you want it slow, sweet the whole way
+                through, and full of the little things that make you smile. And I hope you know, even on the ordinary
+                days, how loved you are.</p>
+            <p>Here's to you, Rosy. Here's to another year of us.</p>
+            <span class="signoff">Yours, always</span>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-eyebrow">Moments</div>
+        <h2 class="section-title">A Few of My Favorites</h2>
+        <div class="gallery">
+            <figure class="frame">
+                <img class="photo-slot" src="assets/imgs/highnesss.jpeg" alt="" style="object-fit:cover;">
+                <figcaption>cutiee</figcaption>
+            </figure>
+
+            <figure class="frame">
+                <img class="photo-slot" src="assets/imgs/highnesssss.jpeg" alt="" style="object-fit:cover;">
+                <figcaption>charming</figcaption>
+            </figure>
+            <figure class="frame">
+                <img class="photo-slot" src="assets/imgs/highnessssss.jpeg" alt="" style="object-fit:cover;">
+                <figcaption>that smile</figcaption>
+            </figure>
+            <figure class="frame">
+                <img class="photo-slot" src="assets/imgs/highnessss.jpeg" alt="" style="object-fit:cover;">
+                <figcaption>say cheese</figcaption>
+            </figure>
+            <figure class="frame">
+                <img class="photo-slot" src="assets/imgs/highnesssssssss.jpeg" alt="" style="object-fit:cover;">
+                <figcaption>glamorous</figcaption>
+            </figure>
+            <figure class="frame">
+                <img class="photo-slot" src="assets/imgs/highnesssssss.jpeg" alt="" style="object-fit:cover;">
+                <figcaption>elegant</figcaption>
+            </figure>
+            <figure class="frame">
+                <img class="photo-slot" src="assets/imgs/highnessssssss.jpeg" alt="" style="object-fit:cover;">
+                <figcaption>gorgeous</figcaption>
+            </figure>
+            <figure class="frame">
+                <img class="photo-slot" src="assets/imgs/highnesssssssssss.jpeg" alt="" style="object-fit:cover;">
+                <figcaption>aaye haye</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section id="wish">
+        <div class="section-eyebrow">Make a Wish</div>
+        <h2 class="section-title">Blow Out the Candles</h2>
+        <div class="cake">
+            <div class="candles">
+                <button class="candle" aria-label="candle one">
+                    <div class="flame"></div>
+                    <div class="stick"></div>
+                </button>
+                <button class="candle" aria-label="candle two">
+                    <div class="flame"></div>
+                    <div class="stick"></div>
+                </button>
+                <button class="candle" aria-label="candle three">
+                    <div class="flame"></div>
+                    <div class="stick"></div>
+                </button>
+            </div>
+            <div class="icing"></div>
+            <div class="cake-base"></div>
+        </div>
+        <p class="wish-hint">tap each candle to make your wish</p>
+        <p class="wish-message" id="wishMsg"></p>
+
+        <div class="reveal-card" id="revealCard">
+            <span class="kicker">Before you go</span>
+            <p id="revealText"></p>
+        </div>
+    </section>
+
+    <div id="glow-flash"></div>
+
+    <footer>made with love, for Rosy</footer>
+
+    <script>
+        // Ambient falling petals
+        (function () {
+            const canvas = document.getElementById('petal-canvas');
+            const glyphs = ['❀', '✿', '❁'];
+            const count = window.innerWidth < 600 ? 14 : 24;
+            for (let i = 0; i < count; i++) {
+                const p = document.createElement('div');
+                p.className = 'petal';
+                p.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.fontSize = (0.8 + Math.random() * 0.9) + 'rem';
+                p.style.setProperty('--drift', (Math.random() * 80 - 40) + 'px');
+                p.style.animationDuration = (9 + Math.random() * 10) + 's';
+                p.style.animationDelay = (Math.random() * 10) + 's';
+                canvas.appendChild(p);
+            }
+        })();
+
+        // Candle blow-out interaction
+        (function () {
+            const candles = document.querySelectorAll('.candle');
+            const msg = document.getElementById('wishMsg');
+            const glow = document.getElementById('glow-flash');
+            const revealCard = document.getElementById('revealCard');
+            const revealText = document.getElementById('revealText');
+            let blownCount = 0;
+
+            const heartGlyphs = ['❤', '🌹', '✿', '❁'];
+
+            function burstHearts() {
+                const total = 22;
+                for (let i = 0; i < total; i++) {
+                    const h = document.createElement('div');
+                    h.className = 'burst-heart';
+                    h.textContent = heartGlyphs[Math.floor(Math.random() * heartGlyphs.length)];
+                    const angle = Math.random() * Math.PI * 2;
+                    const dist = 120 + Math.random() * 260;
+                    h.style.setProperty('--bx', Math.cos(angle) * dist + 'px');
+                    h.style.setProperty('--by', (Math.sin(angle) * dist - 60) + 'px');
+                    h.style.setProperty('--br', (Math.random() * 360 - 180) + 'deg');
+                    h.style.fontSize = (1 + Math.random() * 1.2) + 'rem';
+                    h.style.animationDelay = (Math.random() * 0.25) + 's';
+                    document.body.appendChild(h);
+                    setTimeout(() => h.remove(), 2200);
+                }
+            }
+
+            function typewrite(el, text, speed) {
+                el.innerHTML = '';
+                const cursor = document.createElement('span');
+                cursor.className = 'cursor';
+                let i = 0;
+                function step() {
+                    el.textContent = text.slice(0, i);
+                    el.appendChild(cursor);
+                    if (i < text.length) {
+                        i++;
+                        setTimeout(step, speed);
+                    } else {
+                        setTimeout(() => cursor.remove(), 1200);
+                    }
+                }
+                step();
+            }
+
+            candles.forEach(c => {
+                c.addEventListener('click', () => {
+                    if (c.classList.contains('out')) return;
+                    c.classList.add('out');
+                    blownCount++;
+                    if (blownCount === candles.length) {
+                        msg.textContent = 'Your wish is on its way, Rosy 🌹';
+
+                        glow.classList.add('fire');
+                        burstHearts();
+
+                        setTimeout(() => {
+                            revealCard.classList.add('show');
+                            typewrite(
+                                revealText,
+                                'Whatever you wished for, I hope it finds you — and if it didn\u2019t make the list, know that being loved like this, every single day, already does.',
+                                28
+                            );
+                        }, 500);
+                    }
+                });
+            });
+        })();
+    </script>
+
+</body>
+
+</html>
