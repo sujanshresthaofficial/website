@@ -1,33 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sujan Shrestha | Portfolio</title>
+    <title>Sujan Shrestha | Web Development Projects & Portfolio</title>
+    <meta name="description"
+        content="Browse Sujan Shrestha's web development portfolio, including his WordPress personal site and this static site built and hosted on GitHub Pages.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ssujan.com.np/projects.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ssujan.com.np/projects.html">
+    <meta property="og:site_name" content="Sujan Shrestha">
+    <meta property="og:title" content="Sujan Shrestha | Web Development Projects & Portfolio">
+    <meta property="og:description" content="Browse Sujan Shrestha's web development portfolio and projects.">
+    <meta property="og:image" content="https://ssujan.com.np/assets/itssu.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://ssujan.com.np/projects.html">
+    <meta name="twitter:title" content="Sujan Shrestha | Web Development Projects & Portfolio">
+    <meta name="twitter:description" content="Browse Sujan Shrestha's web development portfolio and projects.">
+    <meta name="twitter:image" content="https://ssujan.com.np/assets/itssu.png">
+
     <link rel="icon" href="assets/newLogo.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        .pageHead {
+            margin-top: -20px;
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            letter-spacing: -0.5px;
+            margin-bottom: 15px;
+        }
+
+        .upcomming-txt {
+            color: var(--accent-blue);
+            opacity: 0.6;
+            margin-bottom: -20px;
+        }
+
+        .upcomming {
+            display: flex;
+        }
+
+        #break {
+            margin: 20px;
+            color: var(--accent-blue);
+            background-color: var(--accent-blue);
+        }
+    </style>
 </head>
+
 <body>
     <div class="wrapper">
         <div id="header-placeholder"></div>
         <main class="container">
-            <div class="pageHead"><h1>Projects</h1></div>
+            <div class="pageHead">
+                <h1 class="pageHead">Projects</h1>
+            </div>
+            <!-- <h2 class="upcomming-txt">Upcomming Projects</h2>
+            <section class=" project-container upcomming">
+                
+            </section> <br> <br>
+            <hr id="break"> -->
             <section class="project-container">
                 <div class="project-card">
-                    <h3 class="project-title">Sujan Shrestha - Dream Big</h3>
-                    <p class="project-description">A personal website built on WordPress.</p>
-                    <a href="https://sujanshresthaofficial.wordpress.com" class="project-link" target="_blank">View Project</a>
+                    <h3 class="project-title">Bee-IT Hive Website</h3>
+                    <p class="project-description">Participated in website building competition [Collab].</p>
+                    <a href="#" class="project-link" target="_self">Coming soon!</a>
                 </div>
                 <div class="project-card">
-                    <h3 class="project-title">Sujan Shrestha</h3>
-                    <p class="project-description">A static website hosted on GitHub Pages.</p>
+                    <h3 class="project-title">Gyankunja - Note Sharing Platform</h3>
+                    <p class="project-description">The Ultimate "Notes Hub" for BIT Undergraduates [Collab].</p>
+                    <a href="#" class="project-link" target="_self">Coming soon!</a>
+                </div>
+                <div class="project-card">
+                    <h3 class="project-title">Personal Site - Poetry Hub</h3>
+                    <p class="project-description">Initial website built while exploring WordPress.</p>
+                    <a href="https://sujanshresthaofficial.wordpress.com" class="project-link" target="_blank">View
+                        Project</a>
+                </div>
+                <div class="project-card">
+                    <h3 class="project-title">Official Personal Website</h3>
+                    <p class="project-description">A static website building on own.</p>
                     <a href="https://ssujan.com.np" class="project-link" target="_blank">View Project</a>
                 </div>
             </section>
         </main>
         <div id="footer-placeholder"></div>
     </div>
+    <script>
+        // 1. Disable Right-Click (Context Menu)
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // 2. Block Keyboard Shortcuts for Inspect Element and View Source
+        document.onkeydown = function (e) {
+            // Block F12 (DevTools) 
+            if (e.keyCode == 123) {
+                return false;
+            }
+
+            // Block Ctrl+Shift+I (Inspect)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                return false;
+            }
+
+            // Block Ctrl+Shift+J (Console)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                return false;
+            }
+
+            // Block Ctrl+Shift+C (Element Selector)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+                return false;
+            }
+
+            // Block Ctrl+U (View Source)
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                return false;
+            }
+        };
+
+        // 2. Disable Copy, Cut, and Paste
+        document.addEventListener('copy', (e) => {
+            e.preventDefault();
+            alert("Copying content is disabled!");
+        });
+        document.addEventListener('cut', (e) => e.preventDefault());
+
+        // 3. Block Keyboard Shortcuts
+        document.onkeydown = function (e) {
+            // Block F12
+            if (e.keyCode == 123) return false;
+
+            // Block Ctrl+C (Copy), Ctrl+V (Paste), Ctrl+X (Cut), Ctrl+A (Select All)
+            if (e.ctrlKey && (e.keyCode === 169 || e.keyCode === 86 || e.keyCode === 88 || e.keyCode === 65)) {
+                return false;
+            }
+
+            // Block Ctrl+Shift+I (Inspect)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
+
+            // Block Ctrl+Shift+J (Console)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
+
+            // Block Ctrl+Shift+C (Inspect)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false;
+
+            // Block Ctrl+U (View Source)
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
+        };
+    </script>
     <script src="javascript.js"></script>
 </body>
+
 </html>

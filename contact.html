@@ -4,7 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sujan Shrestha | Contact</title>
+    <title>Contact Sujan Shrestha | Get In Touch</title>
+    <meta name="description"
+        content="Get in touch with Sujan Shrestha for collaborations, web development projects, or just to say hello.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ssujan.com.np/contact.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ssujan.com.np/contact.html">
+    <meta property="og:site_name" content="Sujan Shrestha">
+    <meta property="og:title" content="Contact Sujan Shrestha">
+    <meta property="og:description" content="Get in touch with Sujan Shrestha for collaborations or projects.">
+    <meta property="og:image" content="https://ssujan.com.np/assets/itssu.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://ssujan.com.np/contact.html">
+    <meta name="twitter:title" content="Contact Sujan Shrestha">
+    <meta name="twitter:description" content="Get in touch with Sujan Shrestha for collaborations or projects.">
+    <meta name="twitter:image" content="https://ssujan.com.np/assets/itssu.png">
+
     <link rel="icon" href="assets/newLogo.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -277,6 +295,68 @@
         </main>
         <div id="footer-placeholder"></div>
     </div>
+    <script>
+        // 1. Disable Right-Click (Context Menu)
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // 2. Block Keyboard Shortcuts for Inspect Element and View Source
+        document.onkeydown = function (e) {
+            // Block F12 (DevTools) 
+            if (e.keyCode == 123) {
+                return false;
+            }
+
+            // Block Ctrl+Shift+I (Inspect)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                return false;
+            }
+
+            // Block Ctrl+Shift+J (Console)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                return false;
+            }
+
+            // Block Ctrl+Shift+C (Element Selector)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+                return false;
+            }
+
+            // Block Ctrl+U (View Source)
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                return false;
+            }
+        };
+
+        // 2. Disable Copy, Cut, and Paste
+        document.addEventListener('copy', (e) => {
+            e.preventDefault();
+            alert("Copying content is disabled!");
+        });
+        document.addEventListener('cut', (e) => e.preventDefault());
+
+        // 3. Block Keyboard Shortcuts
+        document.onkeydown = function (e) {
+            // Block F12
+            if (e.keyCode == 123) return false;
+
+            // Block Ctrl+C (Copy), Ctrl+V (Paste), Ctrl+X (Cut), Ctrl+A (Select All)
+            if (e.ctrlKey && (e.keyCode === 169 || e.keyCode === 86 || e.keyCode === 88 || e.keyCode === 65)) {
+                return false;
+            }
+
+            // Block Ctrl+Shift+I (Inspect)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
+
+            // Block Ctrl+Shift+C (Inspect)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false;
+
+            // Block Ctrl+Shift+J (Console)
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
+
+            // Block Ctrl+U (View Source)
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
+        };
+    </script>
     <script src="javascript.js"></script>
 </body>
 
