@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 /* style.css */
 /* --- Global Reset & Design Foundations --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 :root {
@@ -178,7 +180,9 @@ body.dark-mode .footer {
 
 .footer-socials {
     display: flex;
+    font-size: 12px;
     gap: 20px;
+    align-items: center;
     justify-content: center;
     font-size: 1.5rem;
 }
@@ -201,6 +205,10 @@ body.dark-mode .footer {
     opacity: 0.8;
 }
 
+.color-blue {
+    color: var(--accent-blue);
+}
+
 
 /* --- Emergent & Vibrant Landing Styles --- */
 .hero-container {
@@ -218,8 +226,8 @@ body.dark-mode .footer {
 }
 
 .hero-content .name {
-    font-size: 3.4rem;
-    font-weight: 800;
+    font-size: 51px;
+    font-weight: bolder;
     color: var(--accent-blue);
     line-height: 1.2;
     margin: 15px 0 25px 0;
@@ -227,7 +235,7 @@ body.dark-mode .footer {
 }
 
 .hero-content .subName {
-    font-size: 1.3rem;
+    font-size: 17.5px;
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -256,17 +264,20 @@ body.dark-mode .footer {
 
 .hero-content .intro {
     font-size: 1.05rem;
-    line-height: 1.7;
+    line-height: 24px;
+    letter-spacing: 0.3px;
     opacity: 0.85;
     margin-bottom: 35px;
 }
+
 
 .hero-cta-group {
     display: flex;
     gap: 15px;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
     padding: 12px 28px;
     border-radius: 30px;
     font-size: 14px;
@@ -426,23 +437,25 @@ body.dark-mode .footer {
 }
 
 .project-container {
+    text-align: center;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
     gap: 40px;
     margin-top: 50px;
 }
 
 .project-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     position: relative;
     padding: 30px;
-    /* Soft Glassmorphism */
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-
-    /* Subtle glow instead of heavy shadow */
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
     border-radius: 20px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -450,7 +463,6 @@ body.dark-mode .footer {
     overflow: hidden;
 }
 
-/* Add a subtle shine effect to the top of the card */
 .project-card::before {
     content: "";
     position: absolute;
@@ -464,7 +476,6 @@ body.dark-mode .footer {
 
 .project-card:hover {
     transform: translateY(-10px);
-    /* Neon glow effect on hover */
     box-shadow: 0 15px 30px rgba(24, 119, 245, 0.4);
 }
 
@@ -494,6 +505,7 @@ body.dark-mode .footer {
     border-radius: 12px;
     padding: 10px 20px;
     font-size: 0.9rem;
+    font-weight: bold;
     letter-spacing: 0.5px;
     text-transform: uppercase;
     transition: all 0.3s ease;
@@ -649,6 +661,7 @@ body.dark-mode .project-card {
     background: transparent;
     border: none;
     color: var(--accent-blue);
+    font-size: 0.92rem;
     font-weight: 700;
     cursor: pointer;
     display: inline-flex;
@@ -683,7 +696,8 @@ body.dark-mode .project-card {
 .creative-modal-window {
     background: var(--bg-color);
     border: 1px solid var(--border-color);
-    padding: 40px;
+    font-size: 12px;
+    padding: 20px;
     border-radius: 24px;
     max-width: 600px;
     width: 90%;
@@ -746,7 +760,7 @@ body.dark-mode .project-card {
     display: flex;
     justify-content: center;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 24px;
 }
 
 .contactPageHead {
@@ -768,6 +782,7 @@ form {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), 0 0 15px rgba(24, 119, 245, 0.2);
     display: flex;
     flex-direction: column;
+    width: 400px;
     gap: 15px;
     transition: box-shadow 0.3s ease;
 }
@@ -867,7 +882,7 @@ form textarea {
 
 .warning-msg {
     margin-top: 5px;
-    margin-right: 45%;
+    margin-right: 40%;
     display: none;
     color: #ffa500;
     opacity: 0.8;
@@ -878,7 +893,7 @@ form textarea {
 
 .reach-msg {
     margin-top: 5px;
-    margin-right: 45%;
+    margin-right: 37%;
     display: none;
     color: #ff4d4d;
     opacity: 0.8;
@@ -1023,13 +1038,23 @@ form textarea:focus {
     .hero-container {
         flex-direction: column-reverse;
         text-align: start;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 40px;
+        min-height: 75vh;
+    }
+
+    .vibrant-showcase-section {
+        padding: 25px;
+        background: var(--card-bg);
     }
 
     .header {
         flex-direction: column;
         gap: 20px;
         padding: 20px;
-        /* Tighter padding for mobile */
     }
 
     .logo {
@@ -1060,7 +1085,6 @@ form textarea:focus {
         width: 280px;
         height: 100vh;
         border-radius: 1rem;
-        /* Glassmorphism Effect */
         background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
@@ -1102,19 +1126,35 @@ form textarea:focus {
 
     .getInTouchh {
         height: 390px;
-        width: 475px;
+        width: 400px;
+    }
+
+    .footer-container {
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        text-align: center;
     }
 }
 
-    /* --- Smooth Cross Animation --- */
-    .menu-toggle.active .bar:nth-child(2) {
-        opacity: 0;
-    }
+/* --- Smooth Cross Animation --- */
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
 
-    .menu-toggle.active .bar:nth-child(1) {
-        transform: translateY(9px) rotate(45deg);
-    }
+.menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
 
-    .menu-toggle.active .bar:nth-child(3) {
-        transform: translateY(-9px) rotate(-45deg);
-    }
+.menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
