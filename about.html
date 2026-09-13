@@ -142,7 +142,12 @@
             box-shadow: 0 6px 18px rgba(24, 119, 245, 0.28);
         }
 
-        .bio-socials .fa-github, .fa-instagram, .fa-linkedin, .fa-youtube, .fa-facebook, .fa-tiktok {
+        .bio-socials .fa-github,
+        .fa-instagram,
+        .fa-linkedin,
+        .fa-youtube,
+        .fa-facebook,
+        .fa-tiktok {
             padding: 12px;
         }
 
@@ -333,12 +338,12 @@
             padding: 22px 20px;
             transition: 0.3s ease;
         }
-        
-        .bio-skill-group:hover {            
+
+        .bio-skill-group:hover {
             box-shadow: 0 8px 24px rgba(24, 119, 245, 0.14);
             transform: translateY(-2px);
         }
-        
+
         .bio-skill-group h4 {
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-size: 0.78rem;
@@ -392,7 +397,7 @@
             transition: all 0.3s ease;
             cursor: default;
         }
-        
+
         .bio-hobby-card:hover {
             box-shadow: 0 12px 28px rgba(24, 119, 245, 0.2);
             transform: translateY(-6px);
@@ -553,6 +558,31 @@
             .bio-section {
                 margin-top: 48px;
             }
+
+            .aboutHead {
+                margin-top: -100px;
+                text-align: center;
+                font-weight: bold;
+                font-size: 2.4rem;
+                color: var(--accent-blue);
+                letter-spacing: -0.5px;
+                margin-bottom: 15px;
+            }
+
+            .bio-socials {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 6px;
+                justify-content: center;
+                margin-top: 6px;
+            }
+
+            .bio-tagline {
+                font-size: 12px;
+                opacity: 0.6;
+                letter-spacing: 0.8px;
+                margin: 0;
+            }
         }
     </style>
 </head>
@@ -573,8 +603,9 @@
                     <p class="bio-tagline">I'm an IT Student, Web Developer and Rotaractor on a mission to bridge the
                         gap between education and technology to build functional, user-centric web applications. As a
                         IT student, I combine technical problem-solving with clear communication to deliver clean code.
-                        On the other hand, As a Charter Secretary of Rotaract Club of Gandaki University Fostering Leadership, Fellowship, Service Above Self, Professional Development & Building Connections</p>
-                        <p class="GetInTouch">Get in Touch</p>
+                        On the other hand, As a Charter Secretary of Rotaract Club of Gandaki University Fostering
+                        Leadership, Fellowship, Service Above Self, Professional Development & Building Connections</p>
+                    <p class="GetInTouch">Get in Touch</p>
                     <div class="bio-socials">
                         <a href="https://github.com/sujanshresthaofficial" target="_blank" title="GitHub">
                             <i class="fa-brands fa-github"></i>
@@ -584,16 +615,16 @@
                         </a>
                         <a href="https://www.facebook.com/mr.sujanshrestha" target="_blank" title="Facebook">
                             <i class="fa-brands fa-facebook"></i>
-                        </a>                        
+                        </a>
                         <a href="https://www.instagram.com/sujanshresthaofficial" target="_blank" title="Instagram">
                             <i class="fa-brands fa-instagram"></i>
-                        </a>                        
+                        </a>
                         <a href="https://www.youtube.com/@sujannshrestha" target="_blank" title="YouTube">
                             <i class="fa-brands fa-youtube"></i>
-                        </a>  
+                        </a>
                         <a href="https://tiktok.com/@sujan...shrestha" target="_blank" title="TikTok">
                             <i class="fa-brands fa-tiktok"></i>
-                        </a>                      
+                        </a>
                     </div>
                 </div>
             </section>
@@ -872,7 +903,7 @@
 
             // Block Ctrl+Shift+J (Console)
             if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
-            
+
             // Block Ctrl+Shift+C (Inspect)
             if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false;
 
