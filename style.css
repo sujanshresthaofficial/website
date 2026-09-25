@@ -489,15 +489,6 @@ body.dark-mode .footer {
     transition: 0.4s ease-in-out;
 }
 
-.project-card img:hover {
-    width: 70vmin;
-    height: auto;
-    border-radius: 15px;
-    margin-bottom: 15px;
-    transform: scale(1.2);
-    transition: 0.4s ease-in-out;
-}
-
 .project-title {
     font-size: 1.5rem;
     margin-bottom: 12px;
