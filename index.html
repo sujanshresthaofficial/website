@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | Sujan Shrestha</title>
+    <title>Sujan Shrestha | IT Student, Web Developer & Rotaractor</title>
     <meta name="description"
-        content="Official website of Sujan Shrestha, an IT student, web developer, and Rotaractor from Nepal. Explore his web development projects, technical journey, and blog.">
-    <meta name="robots" content="index, follow">
+        content="Official website of Sujan Shrestha (sujanshresthaofficial), an IT student, web developer and Rotaractor from Nepal. Projects, blog and contact.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="Sujan Shrestha">
     <link rel="canonical" href="https://ssujan.com.np/">
 
     <meta property="og:type" content="website">
@@ -15,14 +16,16 @@
     <meta property="og:site_name" content="Sujan Shrestha">
     <meta property="og:title" content="Sujan Shrestha | IT Student, Web Developer & Rotaractor">
     <meta property="og:description"
-        content="Official website of Sujan Shrestha. Explore his web development projects, technical journey, and blog.">
+        content="Official website of Sujan Shrestha (sujanshresthaofficial), an IT student, web developer and Rotaractor from Nepal. Projects, blog and contact.">
     <meta property="og:image" content="https://ssujan.com.np/assets/itssu.png">
+    <meta property="og:image:alt" content="Sujan Shrestha, IT student and web developer from Nepal">
+    <meta property="og:locale" content="en_US">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://ssujan.com.np/">
     <meta name="twitter:title" content="Sujan Shrestha | IT Student, Web Developer & Rotaractor">
     <meta name="twitter:description"
-        content="Official website of Sujan Shrestha. Explore his web development projects, technical journey, and blog.">
+        content="Official website of Sujan Shrestha (sujanshresthaofficial), an IT student, web developer and Rotaractor from Nepal. Projects, blog and contact.">
     <meta name="twitter:image" content="https://ssujan.com.np/assets/itssu.png">
 
     <link rel="icon" href="assets/newLogo.png">
@@ -32,24 +35,47 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Sujan Shrestha",
-      "url": "https://ssujan.com.np",
-      "image": "https://ssujan.com.np/assets/itssu.png",
-      "jobTitle": "Web Developer",
-      "description": "IT student, web developer, and Rotaractor from Nepal, building web projects and contributing to community service.",
-      "sameAs": [
-        "https://sujanshresthaofficial.wordpress.com",
-        "https://www.facebook.com/mr.sujanshrestha",
-        "https://www.instagram.com/sujanshresthaofficial",
-        "https://www.linkedin.com/in/iamsujanshrestha",
-        "https://github.com/sujanshresthaofficial"
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://ssujan.com.np/#website",
+          "url": "https://ssujan.com.np/",
+          "name": "Sujan Shrestha",
+          "alternateName": ["Sujan Shrestha Official", "sujanshresthaofficial"],
+          "inLanguage": "en",
+          "publisher": { "@id": "https://ssujan.com.np/#person" }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://ssujan.com.np/#person",
+          "name": "Sujan Shrestha",
+          "alternateName": "sujanshresthaofficial",
+          "url": "https://ssujan.com.np/",
+          "image": "https://ssujan.com.np/assets/itssu.png",
+          "jobTitle": "Web Developer",
+          "description": "IT student, web developer, and Rotaractor from Nepal, building web projects and contributing to community service.",
+          "nationality": { "@type": "Country", "name": "Nepal" },
+          "knowsAbout": ["Web development", "HTML", "CSS", "JavaScript", "Information Technology", "Poetry"],
+          "mainEntityOfPage": "https://ssujan.com.np/about.html",
+          "sameAs": [
+            "https://github.com/sujanshresthaofficial",
+            "https://www.linkedin.com/in/iamsujanshrestha",
+            "https://www.facebook.com/mr.sujanshrestha",
+            "https://www.instagram.com/sujanshresthaofficial",
+            "https://www.youtube.com/@sujannshrestha",
+            "https://tiktok.com/@iamsujanshrestha",
+            "https://sujanshresthaofficial.wordpress.com"
+          ]
+        }
       ]
     }
     </script>
 </head>
 
 <body>
+    <script>
+        try { if (localStorage.getItem('theme') === 'dark-mode') document.body.classList.add('dark-mode'); } catch (e) { }
+    </script>
     <div class="wrapper">
         <div id="header-placeholder"></div>
 
@@ -75,7 +101,7 @@
                 </div>
                 <div class="hero-image-wrapper">
                     <div class="hero-image-blob">
-                        <img src="assets/itssu.png" alt="Sujan Shrestha Image Profile">
+                        <img src="assets/itssu.png" alt="Sujan Shrestha, IT student and web developer from Nepal">
                     </div>
                 </div>
             </section>
@@ -112,21 +138,25 @@
                 </h1>
                 <div class="project-container">
                     <div class="project-card">
-                        <a href="https://sujanshresthaofficial.wordpress.com" class="project-img-link" target="_blank">
-                            <img src="assets/web2.png" alt="Website">
+                        <a href="https://sujanshresthaofficial.wordpress.com" class="project-img-link" target="_blank"
+                            rel="noopener noreferrer">
+                            <img src="assets/web2.png" alt="Poetry and graphics hub (WordPress) preview">
                         </a>
                         <h3 class="project-title">Personal Website - Poetry Hub</h3>
                         <p class="project-description">Initial website built while exploring WordPress.</p>
-                        <a href="https://sujanshresthaofficial.wordpress.com" class="project-link" target="_blank">View
+                        <a href="https://sujanshresthaofficial.wordpress.com" class="project-link" target="_blank"
+                            rel="noopener noreferrer">View
                             Project</a>
                     </div>
                     <div class="project-card">
-                        <a href="https://ssujan.com.np" class="project-img-link" target="_blank">
-                            <img src="assets/web1.png" alt="Website">
+                        <a href="https://ssujan.com.np" class="project-img-link" target="_blank"
+                            rel="noopener noreferrer">
+                            <img src="assets/web1.png" alt="Official personal website preview">
                         </a>
                         <h3 class="project-title">Official Personal Website</h3>
                         <p class="project-description">A static website building on own.</p>
-                        <a href="https://ssujan.com.np" class="project-link" target="_blank">View Project</a>
+                        <a href="https://ssujan.com.np" class="project-link" target="_blank"
+                            rel="noopener noreferrer">View Project</a>
                     </div>
                 </div>
             </div>
@@ -134,68 +164,6 @@
 
         <div id="footer-placeholder"></div>
     </div>
-    <script>
-        // 1. Disable Right-Click (Context Menu)
-        document.addEventListener('contextmenu', event => event.preventDefault());
-
-        // 2. Block Keyboard Shortcuts for Inspect Element and View Source
-        document.onkeydown = function (e) {
-            // Block F12 (DevTools) 
-            if (e.keyCode == 123) {
-                return false;
-            }
-
-            // Block Ctrl+Shift+I (Inspect)
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-                return false;
-            }
-
-            // Block Ctrl+Shift+J (Console)
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-                return false;
-            }
-
-            // Block Ctrl+Shift+C (Element Selector)
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
-                return false;
-            }
-
-            // Block Ctrl+U (View Source)
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-                return false;
-            }
-        };
-
-        // 2. Disable Copy, Cut, and Paste
-        document.addEventListener('copy', (e) => {
-            e.preventDefault();
-            alert("Copying content is disabled!");
-        });
-        document.addEventListener('cut', (e) => e.preventDefault());
-
-        // 3. Block Keyboard Shortcuts
-        document.onkeydown = function (e) {
-            // Block F12
-            if (e.keyCode == 123) return false;
-
-            // Block Ctrl+C (Copy), Ctrl+V (Paste), Ctrl+X (Cut), Ctrl+A (Select All)
-            if (e.ctrlKey && (e.keyCode === 169 || e.keyCode === 86 || e.keyCode === 88 || e.keyCode === 65)) {
-                return false;
-            }
-
-            // Block Ctrl+Shift+I (Inspect)
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
-
-            // Block Ctrl+Shift+J (Console)
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
-
-            // Block Ctrl+Shift+C (Inspect)
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false;
-
-            // Block Ctrl+U (View Source)
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
-        };
-    </script>
     <script src="javascript.js"></script>
 </body>
 

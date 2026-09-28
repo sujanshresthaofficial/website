@@ -4,25 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog | Sujan Shrestha</title>
+    <title>Sujan Shrestha's Blog | Tech, Web Dev & Rotaract</title>
     <meta name="description"
-        content="Sujan Shrestha's blog on web development, tech, and Rotaract community service — plus a small corner of poetry.">
-    <meta name="robots" content="index, follow">
+        content="Blog by Sujan Shrestha on IT student life, web development and Rotaract community service, plus Nepali poetry.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="Sujan Shrestha">
     <link rel="canonical" href="https://ssujan.com.np/blog.html">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ssujan.com.np/blog.html">
     <meta property="og:site_name" content="Sujan Shrestha">
-    <meta property="og:title" content="Sujan Shrestha | Blog — Tech, Web Dev & Rotaract">
+    <meta property="og:title" content="Sujan Shrestha's Blog | Tech, Web Dev & Rotaract">
     <meta property="og:description"
-        content="Sujan Shrestha's blog on web development, tech, and Rotaract community service.">
+        content="Blog by Sujan Shrestha on IT student life, web development and Rotaract community service, plus Nepali poetry.">
     <meta property="og:image" content="https://ssujan.com.np/assets/itssu.png">
+    <meta property="og:image:alt" content="Sujan Shrestha, IT student and web developer from Nepal">
+    <meta property="og:locale" content="en_US">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://ssujan.com.np/blog.html">
-    <meta name="twitter:title" content="Sujan Shrestha | Blog — Tech, Web Dev & Rotaract">
+    <meta name="twitter:title" content="Sujan Shrestha's Blog | Tech, Web Dev & Rotaract">
     <meta name="twitter:description"
-        content="Sujan Shrestha's blog on web development, tech, and Rotaract community service.">
+        content="Blog by Sujan Shrestha on IT student life, web development and Rotaract community service, plus Nepali poetry.">
     <meta name="twitter:image" content="https://ssujan.com.np/assets/itssu.png">
 
     <link rel="icon" href="assets/newLogo.png">
@@ -335,6 +338,9 @@
 </head>
 
 <body>
+    <script>
+        try { if (localStorage.getItem('theme') === 'dark-mode') document.body.classList.add('dark-mode'); } catch (e) { }
+    </script>
     <div class="wrapper">
         <div id="header-placeholder"></div>
 
@@ -878,67 +884,6 @@
                 closePoemModal();
             }
         }
-
-        // 1. Disable Right-Click (Context Menu)
-        document.addEventListener('contextmenu', event => event.preventDefault());
-
-        // 2. Block Keyboard Shortcuts for Inspect Element and View Source
-        document.onkeydown = function (e) {
-            // Block F12 (DevTools) 
-            if (e.keyCode == 123) {
-                return false;
-            }
-
-            // Block Ctrl+Shift+I (Inspect)
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-                return false;
-            }
-
-            // Block Ctrl+Shift+J (Console)
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-                return false;
-            }
-
-            // Block Ctrl+Shift+C (Element Selector)
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
-                return false;
-            }
-
-            // Block Ctrl+U (View Source)
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-                return false;
-            }
-        };
-
-        // 2. Disable Copy, Cut, and Paste
-        document.addEventListener('copy', (e) => {
-            e.preventDefault();
-            alert("Copying content is disabled!");
-        });
-        document.addEventListener('cut', (e) => e.preventDefault());
-
-        // 3. Block Keyboard Shortcuts
-        document.onkeydown = function (e) {
-            // Block F12
-            if (e.keyCode == 123) return false;
-
-            // Block Ctrl+C (Copy), Ctrl+V (Paste), Ctrl+X (Cut), Ctrl+A (Select All)
-            if (e.ctrlKey && (e.keyCode === 169 || e.keyCode === 86 || e.keyCode === 88 || e.keyCode === 65)) {
-                return false;
-            }
-
-            // Block Ctrl+Shift+I (Inspect)
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
-
-            // Block Ctrl+Shift+J (Console)
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
-
-            // Block Ctrl+Shift+C (Inspect)
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false;
-
-            // Block Ctrl+U (View Source)
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
-        };
     </script>
 </body>
 

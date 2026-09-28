@@ -1,26 +1,40 @@
-// Global component async fetch orchestrator
+// Load a shared HTML component (header / footer) into a placeholder
 function loadComponent(id, file) {
+    const target = document.getElementById(id);
+    if (!target) return;
+
     fetch(file)
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) throw new Error(`${file} returned ${response.status}`);
+            return response.text();
+        })
         .then(data => {
-            document.getElementById(id).innerHTML = data;
+            target.innerHTML = data;
+
             if (id === 'header-placeholder') {
                 const navToggle = document.getElementById('modeToggle');
-                const currentTheme = localStorage.getItem('theme') || 'light-mode';
-
-                if (currentTheme === 'dark-mode') {
-                    navToggle.checked = true;
-                    document.body.classList.add('dark-mode');
-                }
+                if (!navToggle) return;
+                navToggle.checked = document.body.classList.contains('dark-mode');
                 navToggle.addEventListener('change', switchTheme);
             }
-        }).catch(err => console.error("Error loading component:", err));
+        })
+        .catch(err => console.error('Error loading component:', err));
 }
 
-// Mobile Responsive Navigation Sidebar Drawer Toggles
+// Light / dark theme switch
+function switchTheme(e) {
+    const dark = e.target.checked;
+    document.body.classList.toggle('dark-mode', dark);
+    try {
+        localStorage.setItem('theme', dark ? 'dark-mode' : 'light-mode');
+    } catch (err) { /* storage unavailable - ignore */ }
+}
+
+// Mobile menu
 document.addEventListener('click', function (e) {
     const menuToggle = document.getElementById('mobile-menu');
     const navMenu = document.getElementById('nav-menu');
+    if (!menuToggle || !navMenu) return;
 
     if (e.target.closest('#mobile-menu')) {
         menuToggle.classList.toggle('active');
@@ -29,173 +43,74 @@ document.addEventListener('click', function (e) {
     }
 
     if (e.target.closest('.navigation a')) {
-        menuToggle?.classList.remove('active');
-        navMenu?.classList.remove('active');
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
         document.body.style.overflow = 'auto';
     }
 });
 
-// Light / Dark configuration setting switch rules
-function switchTheme(e) {
-    if (e.target.checked) {
-        document.body.classList.add('dark-mode');
-        localStorage.setItem('theme', 'dark-mode');
-    } else {
-        document.body.classList.remove('dark-mode');
-        localStorage.setItem('theme', 'light-mode');
-    }
-}
-
-// Built-in Lightweight Typewriter Sequence for the Hero Block
-const words = ["IT Student", "Web Developer", "Former Teacher", "Rotaractor"];
-let i = 0, timer;
+// Typewriter effect for the hero
+const words = ['IT Student', 'Web Developer', 'Former Teacher', 'Rotaractor'];
+let wordIndex = 0;
 
 function typingEffect() {
-    let word = words[i].split("");
-    var loopTyping = function () {
-        if (word.length > 0) {
-            document.getElementById('typewriter').innerHTML += word.shift();
+    const el = document.getElementById('typewriter');
+    if (!el) return;
+
+    const letters = words[wordIndex].split('');
+    (function loopTyping() {
+        if (letters.length > 0) {
+            el.textContent += letters.shift();
+            setTimeout(loopTyping, 100);
         } else {
             setTimeout(deletingEffect, 2000);
-            return false;
         }
-        timer = setTimeout(loopTyping, 100);
-    };
-    loopTyping();
+    })();
 }
 
 function deletingEffect() {
-    let word = words[i];
-    var loopDeleting = function () {
+    const el = document.getElementById('typewriter');
+    if (!el) return;
+
+    let word = words[wordIndex];
+    (function loopDeleting() {
         if (word.length > 0) {
             word = word.substring(0, word.length - 1);
-            document.getElementById('typewriter').innerHTML = word;
+            el.textContent = word;
+            setTimeout(loopDeleting, 60);
         } else {
-            i = (words.length > i + 1) ? i + 1 : 0;
+            wordIndex = (wordIndex + 1) % words.length;
             setTimeout(typingEffect, 500);
-            return false;
         }
-        timer = setTimeout(loopDeleting, 60);
-    };
-    loopDeleting();
+    })();
 }
 
-// Core app entry initializer
-window.addEventListener('DOMContentLoaded', function () {
-    loadComponent('header-placeholder', 'header.html');
-    loadComponent('footer-placeholder', 'footer.html');
+// Contact form: 250-character counter
+function initMessageCounter() {
+    const message = document.getElementById('message');
+    if (!message) return;
 
-    // Safety fallback run for typewriter element if active on page
-    setTimeout(() => {
-        if (document.getElementById('typewriter')) {
-            typingEffect();
-        }
-    }, 400);
-});
-
-// Max Length Counter
-document.getElementById('message').addEventListener('input', function () {
     const counter = document.getElementById('char-counter');
     const warning = document.getElementById('warning-msg');
     const reach = document.getElementById('reach-msg');
-    const current = this.value.length;
 
-    counter.textContent = `${current} / 250`;
+    message.addEventListener('input', function () {
+        const current = this.value.length;
 
-    warning.style.display = (current >= 240 && current < 250) ? "block" : "none";
-    reach.style.display = (current == 250) ? "block" : "none";
+        counter.textContent = `${current} / 250`;
+        warning.style.display = (current >= 240 && current < 250) ? 'block' : 'none';
+        reach.style.display = (current === 250) ? 'block' : 'none';
+        counter.style.color = current >= 250 ? '#ff4d4d' : 'var(--accent-blue)';
+    });
+}
 
-    counter.style.color = current >= 250 ? "#ff4d4d" : "var(--accent-blue)";
-});
+// Entry point
+window.addEventListener('DOMContentLoaded', function () {
+    loadComponent('header-placeholder', 'header.html');
+    loadComponent('footer-placeholder', 'footer.html');
+    initMessageCounter();
 
-
-// 1. Disable Right-Click (Context Menu)
-document.addEventListener('contextmenu', event => event.preventDefault());
-
-// 2. Block Keyboard Shortcuts for Inspect Element and View Source
-document.onkeydown = function (e) {
-    // Block F12 (DevTools)
-    if (e.keyCode == 123) {
-        return false;
-    }
-
-    // Block Ctrl+Shift+I (Inspect)
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-        return false;
-    }
-
-    // Block Ctrl+Shift+J (Console)
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-        return false;
-    }
-
-    // Block Ctrl+Shift+C (Element Selector)
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
-        return false;
-    }
-
-    // Block Ctrl+U (View Source)
-    if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-        return false;
-    }
-
-    // Block Ctrl+S (Prevent saving the page)
-    if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
-        return false;
-    }
-};
-
-// 2. Disable Copy, Cut, and Paste
-document.addEventListener('copy', (e) => {
-    e.preventDefault();
-    alert("Copying content is disabled on this portfolio.");
-});
-document.addEventListener('cut', (e) => e.preventDefault());
-
-// 3. Block Keyboard Shortcuts
-document.onkeydown = function (e) {
-    // Block F12
-    if (e.keyCode == 123) return false;
-
-    // Block Ctrl+C (Copy), Ctrl+V (Paste), Ctrl+X (Cut), Ctrl+A (Select All)
-    if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 88 || e.keyCode === 65)) {
-        return false;
-    }
-
-    // Block Ctrl+Shift+I (Inspect)
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
-
-    // Block Ctrl+Shift+J (Console)
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
-
-    // Block Ctrl+U (View Source)
-    if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
-};
-
-
-
-// Bulletproof Mobile Menu Trigger
-document.addEventListener('click', function (e) {
-    const menuToggle = document.getElementById('mobile-menu');
-    const navMenu = document.getElementById('nav-menu');
-
-    // If clicking the hamburger button or bars inside it
-    if (e.target.closest('#mobile-menu')) {
-        menuToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        
-        // Prevent background scrolling when menu is open
-        if (navMenu.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
-        }
-    }
-
-    // Close menu when clicking a navigation link
-    if (e.target.closest('.navigation a')) {
-        menuToggle?.classList.remove('active');
-        navMenu?.classList.remove('active');
-        document.body.style.overflow = 'auto';
+    if (document.getElementById('typewriter')) {
+        setTimeout(typingEffect, 400);
     }
 });
